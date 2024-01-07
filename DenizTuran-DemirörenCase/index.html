@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>İnteraktif Not Kartları</title>
+</head>
+
+<body>
+    <div id="bg-brand-image"></div>
+    <div id="overlay"></div>
+    <main>
+        <div class="card" id="add-note-card">
+            <form id="add-note-form">
+                <h2 class="card-header">Not Kartı Ekle</h2>
+
+                <div class="form-group">
+                    <label for="username">Kullanıcı Adı</label>
+                    <input name="username" class="form-control" id="username" type="text" pattern="[A-Za-z]+" maxlength="50" required />
+                </div>
+                <div class="form-group">
+                    <label for="note">Not</label>
+                    <input name="note" class="form-control" id="note" type="text" required />
+                </div>
+                <button type="submit" id="add-note-btn" class="btn btn-primary">
+                    Not Ekle
+                </button>
+            </form>
+        </div>
+        <div id="notes-container"></div>
+        <!-- Warning Modal -->
+        <div id="warning-modal" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="noteManager.closeWarningModal()">&times;</span>
+                <p>
+                    Uyarı: Aynı kullanıcı adına sahip not zaten mevcut. Lütfen farklı
+                    bir kullanıcı adı seçin.
+                </p>
+            </div>
+        </div>
+        <!-- Edit Note Modal -->
+        <div id="edit-note-modal" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="noteManager.closeEditNoteModal()">&times;</span>
+                <label for="updated-note">Güncellenmiş notu girin:</label>
+                <input type="text" id="updated-note" />
+                <button id="save-updated-note-btn" onclick="noteManager.saveUpdatedNote()">
+                    Kaydet
+                </button>
+            </div>
+        </div>
+    </main>
+    <script src="main.js"></script>
+</body>
+
+</html>
